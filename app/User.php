@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'USUARIOS_NOMBRE', 'USUARIOS_USUARIO', 'USUARIOS_CONTRASEÑA','USUARIOS_ROL',
     ];
 
     /**
@@ -36,4 +36,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Registrar($data)
+    {
+        $usr=User::create([
+            'USUARIOS_NOMBRE'=> $data['Nombre'],
+            'USUARIOS_USUARIO' => $data['Usuario'],
+            'USUARIOS_CONTRASEÑA' =>Hash::make($data['password']),
+            'USUARIOS_ROL' => $data['Rol']
+        ]);
+        $usr->save();
+        return $usr;
+    }
+
+    public function Iniciodesesion($data)
+    {
+        $query=User::where('USUARIOS_USUARIO',$data['Usuario'])->first();
+        if (Hash::check($data['password'],$query->USUARIOS_CONTRASEÑA)) {
+            $data = array('id' =>$query->USUARIOS_ID ,
+                        'Nombre' => $query->USUARIOS_NOMBRE,
+                        'Rol' => $query->USUARIOS_ROL);
+            return $data;
+        }
+    }
 }
