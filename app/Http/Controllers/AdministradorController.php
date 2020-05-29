@@ -132,8 +132,9 @@ class AdministradorController extends Controller
 
             if($request->hasFile('image')) {
                 $file = $request->file('image');
-                $name = time().$file->getClientOriginalName();
-                \Storage::disk('local')->put($name,  \File::get($file));
+                $name = time().$file->getClientOriginalName();           
+               
+                \Storage::disk('public')->put($name,  \File::get($file));
             
                 $proyectos = cd_proyectos::GuardarProjects($request->titulo, $request->descripcion, $name);
 
@@ -161,16 +162,8 @@ class AdministradorController extends Controller
     public function MostrarPro() {
         $proyectos = cd_proyectos::TraerPro();
 
-        // var_dump($proyectos);
-        // die();
-
         if($proyectos != null) {
-            // return view('administrador.agregarInformacion', array(
-            //     'proyectos' => $proyectos,
-
-            // ));
-            // return response()->json( array('success' => true, 'proyectos'=>$proyectos) );
-
+            
             return response()->json($proyectos);
         }
     }

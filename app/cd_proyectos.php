@@ -14,7 +14,7 @@ class cd_proyectos extends Model
                         ->insert([
                             'PROYECTOS_TITULO'=> $titulo,
                             'PROYECTOS_DESCRIPCION' => $descripcion,
-                            'PROYECTOS_IMAGEN' => \Storage::url($imagen)
+                            'PROYECTOS_IMAGEN' => \Storage::url($imagen),
                         ]);
             return $proyectos;
         

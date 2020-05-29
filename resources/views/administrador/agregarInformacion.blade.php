@@ -120,28 +120,19 @@
                 method:"get",
                 url:"MostrarPro",
                 async:false,
-                dataType:'html',
+                dataType:'json',
                         success: function(response){
                             console.log(response);
 
-                            // var tabla;
+                             var tabla="";
                             // // var url;
                             for (let index = 0; index < response.length; index++) {
-                              console.log(response[index].PROYECTOS_TITULO);
-                            //   // url[index] = response[index].PROYECTOS_IMAGEN;
-                            //     // url[index] = '{{ URL::asset('+response[index].PROYECTOS_IMAGEN+') }}'
-                            //     tabla+='<tr><th scope="row">'+response[index].PROYECTOS_ID+'</th> <td>'
-                            //     +response[index].PROYECTOS_TITULO+'</td> <td>'
-                            //     +response[index].PROYECTOS_DESCRIPCION+'</td> <td>'
-                            //     // +response[index].USUARIOS_ROL+'</td> <td>'
-                            //     +'<img class="card-img-top border" style="width:200px; height:150px;"  src="'+response[index].PROYECTOS_IMAGEN+'" alt=""> </td> <td>'
-                            //     +'<a href="javascript:;" style="width: 30%;" onclick="EditarAdmin('+response[index].PROYECTOS_ID+')" class="btn btn-block btn-warning" data="'+response[index].PROYECTOS_ID+'"><i class="fa fa-fw fa-refresh"></i></a>'
-                            //     +'<a href="javascript:;" style="width: 30%;" onclick="Confirmar('+response[index].PROYECTOS_ID+')" class="btn -blobtnck btn-danger" data="'+response[index].PROYECTOS_ID+'"><i class="fa fa-fw fa-remove"></i></a>'
-                            //     +'</td></tr>';
+                            tabla+="<tr><td>"+response[index].PROYECTOS_ID +"</td><td><img src='"+response[index].PROYECTOS_IMAGEN
+                              +"'  width='100px' height='100px' '></td><td>"+response[index].PROYECTOS_DESCRIPCION+"</td></tr>"
                             }
 
                             
-                            $('#contenido').html(response);
+                            $('#contenido').html(tabla);
                         },
                     beforeSend:function(){},
                     error:function(objXMLHttpRequest){
