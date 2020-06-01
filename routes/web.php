@@ -45,4 +45,12 @@ Route::get('AgregarInformacion', 'AdministradorController@AgregarInformacion')->
 //ajax para guardar los datos de inicio cards
 Route::post('GuardarDatos', 'AdministradorController@GuardarDatos')->name('GuardarDatos');
 //mostrar los proyectos
-Route::get('MostrarPro','AdministradorController@MostrarPro')->name('MostrarPro');
+Route::get('MostrarPro','AdministradorVuejs@MostrarPro')->name('MostrarPro');
+//actualizar las cards de los proyectos
+Route::post('ActualizarCards', 'AdministradorVuejs@ActualizarCards')->name('ActualizarCards');
+//actualizar los proyectos
+Route::post('ActualizarProjects', 'AdministradorVuejs@ActualizarProjects')->name('ActualizarProjects');
+//actualizar los proyectos
+Route::post('ProjecActualizar', 'AdministradorController@ProjecActualizar')->name('ProjecActualizar');
+//Vista para agregar las imagenes
+Route::get('AgregarImagenes/{id}', 'AdministradorController@AgregarImagenes')->name('AgregarImagenes');

@@ -39,31 +39,12 @@
                   <ul class="menu-content">
                     <li><a href="{{ route('AgregarInformacion') }}" class="menu-item">Crear Cards</a>
                     </li>
-                    <li><a href="{{ route('principal') }}" class="menu-item">Ver Arministradores</a>
-                    </li>
+
+
                   </ul>
               </li>
 
-              <li class=" nav-item">
-                <a href="inbox.html">
-                  <i class="ft-mail"></i>
-                  <span data-i18n="" class="menu-title">Inbox</span>
-                </a>
-              </li>
-
-              <li class=" nav-item">
-                <a href="chat.html">
-                  <i class="ft-message-square"></i>
-                  <span data-i18n="" class="menu-title">Chat</span>
-                </a>
-              </li>
-
-              <li class=" nav-item">
-                <a href="taskboard.html">
-                  <i class="ft-file-text"></i>
-                  <span data-i18n="" class="menu-title">Task Board</span>
-                </a>
-              </li>
+              
 
               <li class=" nav-item">
                 <a href="{{ route('salir') }}">

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 use DB;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\cd_roles;
 use App\cd_usuarios;
 use App\cd_proyectos;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Response;
+use Illuminate\Http\Request;
+// use Request;
 
 class AdministradorController extends Controller
 {
@@ -16,27 +19,19 @@ class AdministradorController extends Controller
         if(session()->has('admin')==false){
             return redirect('Login');
         }else{
-            
             $roles = cd_roles::getRoles();
-    
             return view('Login.Registro', array(
                 'roles'=>$roles
             ));
-            
         }
 
     }
 
 
     public function MostrarAdministradores() {
-
         if(session()->has('admin')==false){
             return redirect('Login');
         }else{
-            
-            // $roles = cd_roles::getRoles();
-            // $usuarios = cd_usuarios::Usuarios();
-            
             return view('administrador.principal');
             
         }
@@ -67,7 +62,6 @@ class AdministradorController extends Controller
             'id'=> $id,
             'nombre'=> $nombre,
             'usuario'=> $usuario,
-            // 'contraseña' => $contraseña,
         ]);
     }
 
@@ -118,7 +112,6 @@ class AdministradorController extends Controller
         if(session()->has('admin')==false){
             return redirect('Login');
         }else{
-            
             return view('administrador.agregarInformacion');
             
         }
@@ -133,9 +126,7 @@ class AdministradorController extends Controller
             if($request->hasFile('image')) {
                 $file = $request->file('image');
                 $name = time().$file->getClientOriginalName();           
-               
                 \Storage::disk('public')->put($name,  \File::get($file));
-            
                 $proyectos = cd_proyectos::GuardarProjects($request->titulo, $request->descripcion, $name);
 
                 if($proyectos != null) {
@@ -158,13 +149,61 @@ class AdministradorController extends Controller
         }
     }
 
-    // funcion para mostrar los proyectos
-    public function MostrarPro() {
-        $proyectos = cd_proyectos::TraerPro();
 
-        if($proyectos != null) {
-            
-            return response()->json($proyectos);
+    //actualizar los proyectos
+    public function ProjecActualizar(Request $request) {
+        if(session()->has('admin')==false){
+            return redirect('Login');
+        }else{
+            $validador=\Validator::make($request->all(),[
+                'idCard'=>'required',
+                'tituloModal'=>'required',
+                'drscrModal'=>'required'
+            ]);
+
+            if($request->hasFile('ImagenModal')) {
+                $file = $request->file('ImagenModal');
+                $name = time().$file->getClientOriginalName();           
+                \Storage::disk('public')->put($name,  \File::get($file));
+                $proyectos = cd_proyectos::UpdateCardsImage($request->idCard, $name, $request->tituloModal, $request->drscrModal);
+
+                if($proyectos != null) {
+                    return response()->json([
+                        'arreglo'=> 1
+                    ]);
+                }else{
+                    return response()->json([
+                        'arreglo'=> 2
+                    ]);
+                }
+                
+            }else{
+                $proyectos = cd_proyectos::UpdateCards($request->idCard, $request->tituloModal, $request->drscrModal);
+
+                if($proyectos != null) {
+                    return response()->json([
+                        'arreglo'=> 1
+                    ]);
+                }else{
+                    return response()->json([
+                        'arreglo'=> 2
+                    ]);
+                }
+
+            }
         }
     }
+
+
+    public function AgregarImagenes($id_es) {
+        if(session()->has('admin')==false){
+            return redirect('Login');
+        }else{
+            $id=base64_decode($id_es);
+            return view('administrador.agregarImagenes', compact('id'));
+            
+        }
+    }
+
+    
 }

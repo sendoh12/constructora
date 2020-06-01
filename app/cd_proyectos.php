@@ -26,4 +26,37 @@ class cd_proyectos extends Model
                     ->get();
         return $proyectos;
     }
+
+    public static function ActualizarCard($id_card) {
+        $proyectos = DB::table('cd_proyectos')
+                    ->where('PROYECTOS_ID',$id_card)
+                    ->get();
+        return $proyectos;
+    }
+
+    public static function UpdateCardsImage($id, $imagen, $titulo, $descripcion) {
+        
+            $proyectos = DB::table('cd_proyectos')
+                    ->where('PROYECTOS_ID',$id)
+                    ->update([
+                            'PROYECTOS_TITULO'=>$titulo,
+                            'PROYECTOS_IMAGEN'=>\Storage::url($imagen),
+                            'PROYECTOS_DESCRIPCION'=>$descripcion,
+                    ]);
+        return $proyectos;
+        
+
+    }
+
+    public static function UpdateCards($id, $titulo, $descripcion) {
+            $proyectos = DB::table('cd_proyectos')
+                    ->where('PROYECTOS_ID',$id)
+                    ->update([
+                            'PROYECTOS_TITULO'=>$titulo,
+                            'PROYECTOS_DESCRIPCION'=>$descripcion,
+                    ]);
+        return $proyectos;
+
+
+    }
 }
