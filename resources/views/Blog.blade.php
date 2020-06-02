@@ -1,6 +1,6 @@
 @include('Plantillasfrom.Header')
 @include('Plantillasfrom.Menu')
 @include('Plantillasfrom.Seccion')
-inicio
+blog
 @include('Plantillasfrom.Endsccion')
 @include('Plantillasfrom.Footer')

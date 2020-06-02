@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Costrutora Antar</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Costrutora JJ</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -37,7 +37,7 @@
 
   <!-- Template Main CSS File -->
   <link href="Bootstrap/css/style.css" rel="stylesheet">
-
+  
   <!-- =======================================================
   * Template Name: Bell - v2.0.0
   * Template URL: https://bootstrapmade.com/bell-free-bootstrap-4-template/

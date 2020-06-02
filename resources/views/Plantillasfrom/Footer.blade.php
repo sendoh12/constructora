@@ -26,23 +26,23 @@
               </li>
 
               <li class="list-inline-item">
-                <a href="#about">Nosotros</a>
+                <a href="index1">Nosotros</a>
               </li>
 
               <li class="list-inline-item">
-                <a href="#features">Servicios</a>
+                <a href="index2">Servicios</a>
               </li>
 
               <li class="list-inline-item">
-                <a href="#portfolio">Cliente</a>
+                <a href="index3">Cliente</a>
               </li>
 
               <li class="list-inline-item">
-                <a href="#team">Blog</a>
+                <a href="index4">Blog</a>
               </li>
 
               <li class="list-inline-item">
-                <a href="#contact">Contacto</a>
+                <a href="index5">Contacto</a>
               </li>
             </ul>
           </div>
@@ -70,7 +70,13 @@
 
   <!-- Template Main JS File -->
   <script src="Bootstrap/js/main.js"></script>
-
+  <script>
+    $.ajaxSetup({
+      headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+  </script>
 </body>
 
 </html>

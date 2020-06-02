@@ -33,9 +33,9 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li><a href="/">Inicio</a></li>
-          <li><a href="#features">Nosotros</a></li>
-          <li><a href="#portfolio">Servicios</a></li>
-          <li><a href="#team">Clientes</a></li>
+          <li><a href="index1">Nosotros</a></li>
+          <li><a href="index2">Servicios</a></li>
+          <li><a href="index3">Clientes</a></li>
           <!-- <li class="menu-has-children"><a href="">Drop Down</a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
@@ -53,8 +53,8 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li> -->
-          <li><a href="#contact">Blog</a></li>
-          <li><a href="#contact">Contacto</a></li>
+          <li><a href="index4">Blog</a></li>
+          <li><a href="index5">Contacto</a></li>
         </ul>
       </nav>
       <!-- #nav-menu-container -->

@@ -12,10 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
+/**rutas de cliente josemanuel */
+Route::get('/', 'ClienteController@index')->name('raiz');
+Route::get('index1','ClienteController@nosotros')->name('nosotros');
+Route::get('index2','ClienteController@Servisios')->name('servicio');
+Route::get('index3','ClienteController@Cliente')->name('cliente');
+Route::get('index4','ClienteController@blog')->name('Blog');
+Route::get('index5','ClienteController@Contacto')->name('Contacto');
 
 // redireccionar cuando este iniciada la sesion y no deje entrar al login
 Route::group(['middleware' => 'guest'], function () {
