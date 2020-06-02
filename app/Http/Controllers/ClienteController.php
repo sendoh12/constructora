@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 use Response;
 use Illuminate\Http\Request;
-// use Request;
+use App\cd_proyectos;
+
 
 class ClienteController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $proyect=new cd_proyectos();
+        $lista=$proyect->getproyectos();
+        return view('index',compact('lista'));
     }
 
     public function nosotros(){

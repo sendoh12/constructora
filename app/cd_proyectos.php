@@ -59,4 +59,11 @@ class cd_proyectos extends Model
 
 
     }
+
+    public function getproyectos(){
+        $proyectos = DB::table('cd_proyectos')
+        ->select('PROYECTOS_ID','PROYECTOS_TITULO','PROYECTOS_DESCRIPCION','PROYECTOS_IMAGEN','PROYECTO_TIPO')
+        ->get();
+        return $proyectos;        
+    }
 }
