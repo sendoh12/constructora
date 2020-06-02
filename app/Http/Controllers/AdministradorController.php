@@ -6,6 +6,7 @@ use DB;
 use App\cd_roles;
 use App\cd_usuarios;
 use App\cd_proyectos;
+use App\cd_imgene;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -203,6 +204,30 @@ class AdministradorController extends Controller
             return view('administrador.agregarImagenes', compact('id'));
             
         }
+    }
+
+    public function Subirmultilesimagenes(Request $request)
+    {
+        $id=$request->id;
+        if($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $img=new cd_imgene();
+            foreach ($file as $key => $value) {
+                $name = time().$value->getClientOriginalName();
+                $img->Agregarimagenes($name,$key,$id);
+                \Storage::disk('public')->put($name,  \File::get($value));
+            }
+            return response()->json(true);
+        }
+        return response()->json(false);
+    }
+
+    public function getimgenes($id)
+    {
+        $img=new cd_imgene();
+        $reusltado=$img->mostrar($id);
+        
+        return response()->json($reusltado);
     }
 
     

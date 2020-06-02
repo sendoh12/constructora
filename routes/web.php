@@ -54,3 +54,7 @@ Route::post('ActualizarProjects', 'AdministradorVuejs@ActualizarProjects')->name
 Route::post('ProjecActualizar', 'AdministradorController@ProjecActualizar')->name('ProjecActualizar');
 //Vista para agregar las imagenes
 Route::get('AgregarImagenes/{id}', 'AdministradorController@AgregarImagenes')->name('AgregarImagenes');
+
+Route::post('subirimagenes','AdministradorController@Subirmultilesimagenes')->name('Subirmutiplesimagenes');
+
+Route::get('/mostrarimagenes/{id}','AdministradorController@getimgenes')->name('imagen');

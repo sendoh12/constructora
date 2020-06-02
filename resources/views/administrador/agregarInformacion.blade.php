@@ -268,14 +268,14 @@
 
           InsertImage:function(id) {
             var id_codi = btoa(id);
-            console.log(id_codi);
+            //console.log(id_codi);
             var url = '{{ route("AgregarImagenes", ":slug") }}';
             url = url.replace(':slug', id_codi);
             window.location.href=url;
 				  },
         },
 
-      })
+      });
     </script>
 
     <script>
@@ -363,10 +363,4 @@
                 });
             });
         });
-
-        
-
-       
-
-
-    </script>
+</script>
